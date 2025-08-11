@@ -5,10 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - Arq. Glenn Landavere - LARQ Arquitectura y Construcción</title>
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/page-transitions.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/png" href="images/Logo_larq.png">
+    <style>
+        /* Estilos específicos para la página de contacto */
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+            padding: 2rem 0;
+        }
+
+        .contact-form-wrapper {
+            text-align: center;
+            width: 400px;
+            max-width: 90%;
+        }
+
+        .contact-header h1 {
+            margin: 0;
+            font-size: 20px;
+            color: #444;
+            font-weight: normal;
+            font-family: Arial, sans-serif;
+        }
+
+        .contact-header p {
+            margin: 5px 0 0;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.2;
+            font-family: Arial, sans-serif;
+        }
+
+        .contact-header .email {
+            font-size: 11px;
+            color: #777;
+            margin-top: 10px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin: 15px 0;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            color: #444;
+            margin-bottom: 5px;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 0;
+            font-size: 12px;
+            box-sizing: border-box;
+            background: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .submit-button {
+            background-color: #000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+            margin-top: 10px;
+            font-family: Arial, sans-serif;
+        }
+
+        .submit-button:hover {
+            background-color: #333;
+        }
+
+        .submit-button:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-form-wrapper {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .contact-container {
+                min-height: 50vh;
+                padding: 1rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header y Navegación -->
@@ -23,11 +123,10 @@
                     </div>
                 </a>
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Galería</a></li>
-                    <li><a href="proyectos.html" class="nav-link">Proyectos</a></li>
-                    <li><a href="gente.html" class="nav-link">Gente</a></li>
-                    <li><a href="contacto.html" class="nav-link active">Contacto</a></li>
                     <li><a href="acerca.html" class="nav-link">Acerca de</a></li>
+                    <li><a href="proyectos.html" class="nav-link">Proyectos</a></li>
+                    <li><a href="gente.html" class="nav-link">Personas</a></li>
+                    <li><a href="contacto.html" class="nav-link active">Contacto</a></li>
                 </ul>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/glenn-landavere-09aba4a/" target="_blank" class="social-link linkedin">
@@ -59,199 +158,41 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Página Contacto -->
-        <section class="contact-page">
-            <div class="page-header">
-                <h1 class="page-title">Contacto</h1>
-                <p class="page-subtitle">¿Tienes un proyecto en mente? Conversemos sobre cómo podemos ayudarte</p>
-            </div>
-            
-            <div class="contact-content">
-                <div class="contact-intro">
-                    <p>
-                        En LARQ Arquitectura y Construcción estamos listos para transformar tus ideas en realidades 
-                        arquitectónicas excepcionales. Contáctanos para una consulta inicial gratuita y descubre 
-                        cómo podemos maximizar el valor de tu inversión inmobiliaria.
-                    </p>
+        <div class="contact-container">
+            <div class="contact-form-wrapper">
+                <div class="contact-header">
+                    <h1>LARQ Arquitectura y Construcción</h1>
+                    <p>Av. El Bosque 123, Piso 8</p>
+                    <p>San Isidro, Lima 15036</p>
+                    <p>Perú</p>
+                    <p class="email">correo electrónico: glenn.ladavere@larq.net</p>
                 </div>
 
-                <div class="contact-container">
-                    <div class="contact-form-section">
-                        <h2>Envíanos un Mensaje</h2>
-                        <form class="contact-form" id="contactForm">
-                            <div class="form-group">
-                                <label for="name">Nombre Completo *</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">Correo Electrónico *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">Teléfono</label>
-                                <input type="tel" id="phone" name="phone">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="project-type">Tipo de Proyecto *</label>
-                                <select id="project-type" name="project-type" required>
-                                    <option value="">Selecciona una opción</option>
-                                    <option value="residential">Residencial</option>
-                                    <option value="commercial">Comercial</option>
-                                    <option value="institutional">Institucional</option>
-                                    <option value="renovation">Remodelación</option>
-                                    <option value="consultation">Consultoría</option>
-                                    <option value="other">Otro</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="budget">Presupuesto Estimado</label>
-                                <select id="budget" name="budget">
-                                    <option value="">Selecciona un rango</option>
-                                    <option value="50k-100k">$50,000 - $100,000</option>
-                                    <option value="100k-250k">$100,000 - $250,000</option>
-                                    <option value="250k-500k">$250,000 - $500,000</option>
-                                    <option value="500k-1m">$500,000 - $1,000,000</option>
-                                    <option value="1m+">Más de $1,000,000</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="timeline">Cronograma Deseado</label>
-                                <select id="timeline" name="timeline">
-                                    <option value="">Selecciona un plazo</option>
-                                    <option value="immediate">Inmediato (1-3 meses)</option>
-                                    <option value="short">Corto plazo (3-6 meses)</option>
-                                    <option value="medium">Mediano plazo (6-12 meses)</option>
-                                    <option value="long">Largo plazo (más de 1 año)</option>
-                                    <option value="flexible">Flexible</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message">Descripción del Proyecto *</label>
-                                <textarea id="message" name="message" rows="5" placeholder="Cuéntanos sobre tu proyecto, objetivos, ubicación y cualquier detalle relevante..." required></textarea>
-                            </div>
-                            
-                            <button type="submit" class="submit-btn">
-                                <i class="fas fa-paper-plane"></i>
-                                Enviar Mensaje
-                            </button>
-                        </form>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre *</label>
+                        <input type="text" id="nombre" name="nombre" required>
                     </div>
 
-                    <div class="contact-info-section">
-                        <h2>Información de Contacto</h2>
-                        
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="contact-details">
-                                    <h3>Correo Electrónico</h3>
-                                    <p><a href="mailto:glenn.ladavere@larq.net">glenn.ladavere@larq.net</a></p>
-                                    <p><a href="mailto:info@larq.net">info@larq.net</a></p>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                <div class="contact-details">
-                                    <h3>Teléfono</h3>
-                                    <p><a href="tel:+51987654321">+51 987 654 321</a></p>
-                                    <p><a href="tel:+5114567890">+51 1 456 7890</a></p>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="contact-details">
-                                    <h3>Oficina Principal</h3>
-                                    <p>Av. El Bosque 123, Piso 8<br>
-                                    San Isidro, Lima 15036<br>
-                                    Perú</p>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <div class="contact-details">
-                                    <h3>Horarios de Atención</h3>
-                                    <p>Lunes a Viernes: 9:00 AM - 6:00 PM<br>
-                                    Sábados: 9:00 AM - 1:00 PM<br>
-                                    Domingos: Cerrado</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="social-contact">
-                            <h3>Síguenos en Redes Sociales</h3>
-                            <div class="social-links-contact">
-                                <a href="https://www.linkedin.com/in/glenn-landavere-09aba4a/" target="_blank" class="social-link-contact linkedin">
-                                    <i class="fab fa-linkedin"></i>
-                                    <span>LinkedIn</span>
-                                </a>
-                                <a href="https://www.facebook.com/larqarquitecturayconstruccion/?locale=es_LA" target="_blank" class="social-link-contact facebook">
-                                    <i class="fab fa-facebook"></i>
-                                    <span>Facebook</span>
-                                </a>
-                                <a href="https://www.instagram.com/larq.arquitectura/?hl=es-la" target="_blank" class="social-link-contact instagram">
-                                    <i class="fab fa-instagram"></i>
-                                    <span>Instagram</span>
-                                </a>
-                                <a href="https://www.youtube.com/@glennlandavere9719" target="_blank" class="social-link-contact youtube">
-                                    <i class="fab fa-youtube"></i>
-                                    <span>YouTube</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="consultation-cta">
-                            <h3>Consulta Gratuita</h3>
-                            <p>Agenda una consulta inicial gratuita de 30 minutos para discutir tu proyecto.</p>
-                            <a href="mailto:glenn.ladavere@larq.net?subject=Solicitud de Consulta Gratuita" class="cta-btn">
-                                <i class="fas fa-calendar-alt"></i>
-                                Agendar Consulta
-                            </a>
-                        </div>
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico *</label>
+                        <input type="email" id="correo" name="correo" required>
                     </div>
-                </div>
 
-                <!-- Sección de Ubicación con Mapa -->
-                <section class="location-section">
-                    <div class="container">
-                        <div class="location-content">
-                            <div class="location-info">
-                                <h3 class="titulo-tahoma">Nuestra Ubicación</h3>
-                                <p>Estratégicamente ubicados en el corazón financiero de Lima</p>
-                                
-                            </div>
-                            <div class="map-container">
-                                <iframe 
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.0651819419513!2d-77.04223382416622!3d-12.107690288133858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c84751c65333%3A0x90e374b92225dd1f!2sAv.%20Emilio%20Cavenecia%20389%2C%20San%20Isidro%2015073!5e0!3m2!1ses!2spe!4v1753739484371!5m2!1ses!2spe"
-                                    width="100%" 
-                                    height="300" 
-                                    style="border:0;" 
-                                    allowfullscreen="" 
-                                    loading="lazy" 
-                                    referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="asunto">Asunto</label>
+                        <input type="text" id="asunto" name="asunto">
                     </div>
-                </section>
+
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Enviar</button>
+                </form>
             </div>
-        </section>
+        </div>
     </main>
 
     <script>
@@ -289,22 +230,22 @@
             const data = Object.fromEntries(formData);
             
             // Simple validation
-            if (!data.name || !data.email || !data['project-type'] || !data.message) {
-                alert('Por favor, completa todos los campos obligatorios.');
+            if (!data.nombre || !data.correo) {
+                alert('Por favor, completa los campos obligatorios (Nombre y Correo electrónico).');
                 return;
             }
             
             // Simulate form submission
-            const submitBtn = contactForm.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
+            const submitBtn = contactForm.querySelector('.submit-button');
+            const originalText = submitBtn.textContent;
             
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            submitBtn.textContent = 'Enviando...';
             submitBtn.disabled = true;
             
             setTimeout(() => {
                 alert('¡Mensaje enviado exitosamente! Te contactaremos pronto.');
                 contactForm.reset();
-                submitBtn.innerHTML = originalText;
+                submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             }, 2000);
         });

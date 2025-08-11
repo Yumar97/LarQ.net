@@ -1,14 +1,155 @@
-header, .header {
-    transition: none !important;
-    animation: none !important;
+/* 
+ * Estilos para Transiciones de Página
+ * Efectos de fade in y fade out suaves
+ */
+
+/* Preparar el body para transiciones */
+body {
+    transition: opacity 600ms ease-in-out;
 }
 
-/* Asegura que los íconos del header sean fijos y no tengan transición */
-header .social-link,
-header .social-link img,
-header .social-link i {
-    transition: none !important;
-    animation: none !important;
+/* Overlay de transición - Solo sobre el contenido principal */
+#page-transition-overlay {
+    position: fixed;
+    top: 120px; /* Debajo del header */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 120px); /* Altura menos el header */
+    background-color: rgba(248, 249, 250, 0.85);
+    backdrop-filter: blur(2px);
+    z-index: 1500; /* Menor que el header (z-index: 1000) */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 600ms ease-in-out, visibility 600ms ease-in-out;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Indicador de carga más sutil */
+#page-transition-overlay::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(51, 51, 51, 0.2);
+    border-top: 2px solid rgba(51, 51, 51, 0.6);
+    border-radius: 50%;
+    animation: spin 1.5s ease-in-out infinite;
+}
+
+/* Animación de carga */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Estados de transición */
+.page-transitioning {
+    pointer-events: none;
+}
+
+.page-fade-out {
+    opacity: 0 !important;
+}
+
+.page-fade-in {
     opacity: 1 !important;
+}
+
+/* Optimizaciones de rendimiento */
+.main-content,
+.header,
+.nav-menu {
+    will-change: opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Solo el contenido principal tiene transiciones suaves */
+.main-content {
+    transition: opacity 600ms ease-in-out;
+    opacity: 0; /* Iniciar invisible para fade in suave */
+}
+
+/* Clase para cuando el contenido está listo */
+.main-content.loaded {
+    opacity: 1;
+}
+
+/* El header NO tiene transiciones - permanece completamente fijo */
+.header {
+    transition: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
     transform: none !important;
+    position: fixed !important;
+}
+
+.header * {
+    transition: none !important;
+}
+
+.navbar {
+    transition: none !important;
+}
+
+.nav-container {
+    transition: none !important;
+}
+
+.logo {
+    transition: none !important;
+}
+
+.nav-menu {
+    transition: none !important;
+}
+
+.social-links {
+    transition: none !important;
+}
+
+/* Evitar flash de contenido sin estilo */
+.no-js body {
+    opacity: 1 !important;
+}
+
+/* Responsive - Reducir duración en móviles para mejor rendimiento */
+@media (max-width: 768px) {
+    body,
+    .main-content,
+    .header,
+    #page-transition-overlay {
+        transition-duration: 200ms;
+    }
+    
+    /* Asegurar que el header siga sin transiciones en móvil */
+    .header {
+        transition: none !important;
+    }
+}
+
+/* Modo de alto contraste */
+@media (prefers-reduced-motion: reduce) {
+    body,
+    .main-content,
+    .header,
+    #page-transition-overlay {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    #page-transition-overlay::after {
+        animation: none !important;
+    }
+}
+
+/* Estados para debugging (opcional) */
+.debug-transitions #page-transition-overlay {
+    background-color: rgba(255, 0, 0, 0.3) !important;
+}
+
+.debug-transitions body {
+    border: 2px solid blue !important;
 }

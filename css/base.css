@@ -11,6 +11,8 @@ body {
     background-color: #f8f9fa;
     color: #333;
     line-height: 1.6;
+    opacity: 1;
+    transition: opacity 600ms ease-in-out;
 }
 
 /* Fuente Tahoma para títulos */
@@ -270,4 +272,36 @@ body {
     .page-subtitle {
         font-size: 1rem;
     }
+}
+
+/* Asegurar que el header permanezca completamente fijo sin efectos */
+.header {
+    transition: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
+.header * {
+    transition: none !important;
+}
+
+.navbar {
+    transition: none !important;
+}
+
+.nav-container {
+    transition: none !important;
+}
+
+.logo {
+    transition: none !important;
+}
+
+.nav-menu {
+    transition: none !important;
+}
+
+.social-links {
+    transition: none !important;
 }
