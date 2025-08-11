@@ -1,0 +1,81 @@
+/* Projects Simple Page Styles - Estilos simples para la lista de proyectos */
+
+.page-title {
+    font-size: 17px !important;
+    font-family: 'Times New Roman', serif !important;
+    font-weight: normal !important;
+}
+
+.projects-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Lista de Proyectos */
+.projects-list {
+    margin-top: 2rem;
+}
+
+.project-year-group {
+    margin-bottom: 1.5rem;
+}
+
+.year-title {
+    text-align: center;
+    font-size: 15px;
+    font-weight: normal;
+    color: #2c3e50;
+    margin-bottom: 0.1rem;
+    font-family: 'Times New Roman', serif;
+}
+
+.project-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+.project-item h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: normal;
+    font-family: 'Times New Roman', serif;
+}
+
+.project-link {
+    color: #2c3e50;
+    text-decoration: none;
+    font-family: 'Times New Roman', serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .projects-content {
+        padding: 0 1rem;
+    }
+
+    .year-title {
+        font-size: 15px;
+    }
+
+    .project-item h3 {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .year-title {
+        font-size: 15px;
+    }
+
+    .project-item {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+    }
+}

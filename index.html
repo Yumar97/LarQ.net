@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Proyectos - Arq. Glenn Landavere - LARQ Arquitectura y Construcción</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/page-transitions.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/Logo_larq.png">
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/Logo_larq.png" alt="Larq Arquitectura y Construcción" class="logo-image">
+                    <div class="logo-text">
+                        <h2>LARQ</h2>
+                        <span>Glenn Landavere</span>
+                    </div>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="acerca.html" class="nav-link">Acerca de</a></li>
+                    <li><a href="proyectos.html" class="nav-link">Proyectos</a></li>
+                    <li><a href="gente.html" class="nav-link">Personas</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/glenn-landavere-09aba4a/" target="_blank" class="social-link linkedin">
+                        <img src="icons/linkedin.svg" alt="LinkedIn" width="24" height="24">
+                    </a>
+                    <a href="https://www.facebook.com/larqarquitecturayconstruccion/?locale=es_LA" target="_blank" class="social-link facebook">
+                        <img src="icons/facebook.svg" alt="Facebook" width="24" height="24">
+                    </a>
+                    <a href="https://www.instagram.com/larq.arquitectura/?hl=es-la" target="_blank" class="social-link instagram">
+                        <img src="icons/instagram.svg" alt="Instagram" width="24" height="24">
+                    </a>
+                    <a href="https://www.youtube.com/@glennlandavere9719" target="_blank" class="social-link youtube">
+                        <img src="icons/youtube.svg" alt="YouTube" width="24" height="24">
+                    </a>
+                    <a href="mailto:glenn.ladavere@larq.net" class="social-link email">
+                        <img src="icons/gmail.svg" alt="Gmail" width="24" height="24">
+                    </a>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+        <!-- Overlay para cerrar el menú móvil -->
+        <div class="nav-overlay"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Galería de Proyectos -->
+        <section class="gallery-page">
+            
+
+            <!-- Grid de Galería -->
+            <div class="gallery-grid">
+                <!-- Proyecto 1: Edificio Palomas, Surquillo -->
+                <div class="gallery-item" data-category="residential">
+                    <div class="gallery-image">
+                        <img src="images/Edificio Palomas, Surquillo/Edificio Palomas, Surquillo.png" alt="Edificio Palomas, Surquillo" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Edificio Palomas</h3>
+                                <p>Surquillo, Lima</p>
+                                <span class="category-tag">Residencial</span>
+                            </div>
+                            <div class="gallery-actions">
+                                <button class="view-btn" onclick="openProjectGallery('palomas')">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2: Hotel Tambo del Inka -->
+                <div class="gallery-item" data-category="hospitality">
+                    <div class="gallery-image">
+                        <img src="images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease.jpg" alt="Hotel Tambo del Inka" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Hotel Tambo del Inka</h3>
+                                <p>Urubamba, Cusco</p>
+                                <span class="category-tag">Hotelería</span>
+                            </div>
+                            <div class="gallery-actions">
+                                <button class="view-btn" onclick="openProjectGallery('tambo')">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3: Hotel Paracas -->
+                <div class="gallery-item" data-category="hospitality">
+                    <div class="gallery-image">
+                        <img src="images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease.jpg" alt="Hotel Paracas" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Hotel Paracas</h3>
+                                <p>Paracas, Ica</p>
+                                <span class="category-tag">Hotelería</span>
+                            </div>
+                            <div class="gallery-actions">
+                                <button class="view-btn" onclick="openProjectGallery('paracas')">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 4: Edificio AltaVista -->
+                <div class="gallery-item" data-category="residential">
+                    <div class="gallery-image">
+                        <img src="images/Edificio Altavista/Edificio AltavistaContratista GeneralEmpresa- JE Construcciones Generales.jpg" alt="Edificio AltaVista" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Edificio AltaVista</h3>
+                                <p>Proyecto Residencial</p>
+                                <span class="category-tag">Residencial</span>
+                            </div>
+                            <div class="gallery-actions">
+                                <button class="view-btn" onclick="openProjectGallery('altavista')">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal para galería de proyecto específico -->
+        <div id="project-modal" class="project-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-title"></h2>
+                    <span class="modal-close" onclick="closeProjectModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="project-gallery" id="project-gallery">
+                        <!-- Las imágenes se cargarán dinámicamente aquí -->
+                    </div>
+                </div>
+                <div class="modal-nav">
+                    <button class="modal-prev" onclick="prevProjectImage()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="modal-next" onclick="nextProjectImage()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lightbox Modal para imagen individual -->
+        <div id="lightbox" class="lightbox">
+            <div class="lightbox-content">
+                <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+                <img id="lightbox-image" src="" alt="">
+                <div class="lightbox-caption">
+                    <h3 id="lightbox-title"></h3>
+                </div>
+                <div class="lightbox-nav">
+                    <button class="lightbox-prev" onclick="prevImage()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="lightbox-next" onclick="nextImage()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const navOverlay = document.querySelector('.nav-overlay');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navOverlay.style.display = navMenu.classList.contains('active') ? 'block' : 'none';
+        });
+
+        navOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navOverlay.style.display = 'none';
+        });
+
+        // Close mobile menu when clicking on nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navOverlay.style.display = 'none';
+            });
+        });
+
+        // Datos de los proyectos
+        const projectData = {
+            palomas: {
+                title: 'Edificio Palomas - Surquillo',
+                images: [
+                    'images/Edificio Palomas, Surquillo/Edificio Palomas, Surquillo.png'
+                ]
+            },
+            tambo: {
+                title: 'Hotel Tambo del Inka - Urubamba, Cusco',
+                images: [
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease.jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (1).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (2).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (3).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (4).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (5).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (6).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (7).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (8).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (9).jpg'
+                ]
+            },
+            paracas: {
+                title: 'Hotel Paracas - Paracas, Ica',
+                images: [
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease.jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (1).jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (2).jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (3).jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (4).jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (5).jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (6).jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (7).jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (8).jpg'
+                ]
+            },
+            altavista: {
+                title: 'Edificio AltaVista',
+                images: [
+                    'images/Edificio Altavista/Edificio AltavistaContratista GeneralEmpresa- JE Construcciones Generales.jpg'
+                ]
+            }
+        };
+
+        let currentProject = null;
+        let currentProjectImageIndex = 0;
+        let currentImageIndex = 0;
+        let galleryImages = [];
+
+        // Abrir galería de proyecto específico
+        function openProjectGallery(projectKey) {
+            currentProject = projectKey;
+            currentProjectImageIndex = 0;
+            
+            const project = projectData[projectKey];
+            const modal = document.getElementById('project-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const projectGallery = document.getElementById('project-gallery');
+            
+            modalTitle.textContent = project.title;
+            
+            // Limpiar galería anterior
+            projectGallery.innerHTML = '';
+            
+            // Crear grid de imágenes
+            project.images.forEach((imageSrc, index) => {
+                const imageContainer = document.createElement('div');
+                imageContainer.className = 'project-image-container';
+                
+                const img = document.createElement('img');
+                img.src = imageSrc;
+                img.alt = project.title;
+                img.loading = 'lazy';
+                img.onclick = () => openLightboxFromProject(imageSrc, project.title, index);
+                
+                imageContainer.appendChild(img);
+                projectGallery.appendChild(imageContainer);
+            });
+            
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10);
+        }
+
+        // Cerrar modal de proyecto
+        function closeProjectModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('active');
+            
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                currentProject = null;
+            }, 300);
+        }
+
+        // Abrir lightbox desde galería de proyecto
+        function openLightboxFromProject(imageSrc, title, index) {
+            if (currentProject) {
+                galleryImages = projectData[currentProject].images.map(src => ({
+                    src: src,
+                    alt: title,
+                    title: title
+                }));
+                currentImageIndex = index;
+            }
+            
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            
+            lightboxImage.src = imageSrc;
+            lightboxImage.alt = title;
+            lightboxTitle.textContent = title;
+            
+            lightbox.style.display = 'flex';
+            
+            setTimeout(() => {
+                lightbox.classList.add('active');
+            }, 10);
+        }
+
+        // Funciones de navegación del lightbox
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+            }, 300);
+        }
+
+        function nextImage() {
+            if (currentImageIndex < galleryImages.length - 1) {
+                currentImageIndex++;
+            } else {
+                currentImageIndex = 0;
+            }
+            updateLightboxImage();
+        }
+
+        function prevImage() {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+            } else {
+                currentImageIndex = galleryImages.length - 1;
+            }
+            updateLightboxImage();
+        }
+
+        function updateLightboxImage() {
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            const currentImage = galleryImages[currentImageIndex];
+            
+            lightboxImage.style.opacity = '0';
+            
+            setTimeout(() => {
+                lightboxImage.src = currentImage.src;
+                lightboxImage.alt = currentImage.alt;
+                lightboxTitle.textContent = currentImage.title;
+                lightboxImage.style.opacity = '1';
+            }, 150);
+        }
+
+        // Navegación del modal de proyecto (no implementada en esta versión)
+        function nextProjectImage() {
+            // Funcionalidad para navegar entre proyectos si se desea
+        }
+
+        function prevProjectImage() {
+            // Funcionalidad para navegar entre proyectos si se desea
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('lightbox');
+            const modal = document.getElementById('project-modal');
+            
+            if (lightbox.style.display === 'flex') {
+                switch(e.key) {
+                    case 'Escape':
+                        closeLightbox();
+                        break;
+                    case 'ArrowLeft':
+                        prevImage();
+                        break;
+                    case 'ArrowRight':
+                        nextImage();
+                        break;
+                }
+            } else if (modal.style.display === 'flex') {
+                if (e.key === 'Escape') {
+                    closeProjectModal();
+                }
+            }
+        });
+
+        // Close modals when clicking outside
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') {
+                closeLightbox();
+            }
+        });
+
+        document.getElementById('project-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'project-modal') {
+                closeProjectModal();
+            }
+        });
+    </script>
+
+    <style>
+        /* Estilos adicionales para el modal de proyecto */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-modal.active {
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: #2c3e50;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .modal-close {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+            line-height: 1;
+            padding: 0.5rem;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-image-container {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-image-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image-container img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .modal-nav {
+            display: none; /* Oculto por ahora */
+        }
+
+        /* Responsive para modal */
+        @media (max-width: 768px) {
+            .modal-content {
+                max-width: 95vw;
+                max-height: 95vh;
+            }
+
+            .project-gallery {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .modal-header {
+                padding: 1rem;
+            }
+
+            .modal-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .modal-body {
+                padding: 1rem;
+            }
+        }
+    </style>
+
+    <!-- Page Transitions Script -->
+    <script src="js/page-transitions.js"></script>
+</body>
+</html>

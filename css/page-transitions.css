@@ -1,0 +1,14 @@
+header, .header {
+    transition: none !important;
+    animation: none !important;
+}
+
+/* Asegura que los íconos del header sean fijos y no tengan transición */
+header .social-link,
+header .social-link img,
+header .social-link i {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+}

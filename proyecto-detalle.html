@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto - LARQ Arquitectura y Construcción</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: white;
+            font-family: 'Times New Roman', serif;
+            padding: 40px 20px;
+        }
+        
+        .project-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .project-title {
+            font-size: 24px;
+            font-weight: normal;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .project-info {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .project-description {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333;
+            text-align: justify;
+        }
+        
+        /* Estilos para imagen única */
+        .project-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 0 auto 30px auto;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 8px;
+        }
+        
+        .project-image:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Estilos para galería de imágenes */
+        .project-gallery {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 5px;
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Modal para imagen ampliada */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 95%;
+            max-height: 95%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            border-radius: 8px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .close-modal:hover {
+            opacity: 0.7;
+        }
+        
+        /* Navegación del modal */
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        
+        .modal-nav:hover {
+            background: rgba(255,255,255,0.4);
+        }
+        
+        .modal-prev {
+            left: 20px;
+        }
+        
+        .modal-next {
+            right: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .project-image {
+                max-width: 90%;
+            }
+            
+            .project-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+            }
+            
+            .gallery-image {
+                height: 120px;
+            }
+            
+            .project-title {
+                font-size: 20px;
+            }
+            
+            body {
+                padding: 20px 10px;
+            }
+            
+            .close-modal {
+                top: 10px;
+                right: 20px;
+                font-size: 30px;
+            }
+            
+            .modal-nav {
+                font-size: 20px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/png" href="images/Logo_larq.png">
+    <link rel="stylesheet" href="css/page-transitions.css">
+</head>
+<body>
+    <main class="main-content">
+        <div class="project-container">
+            <h1 id="project-title" class="project-title">Cargando proyecto...</h1>
+            <div id="project-info" class="project-info"></div>
+            <!-- Descripción del proyecto primero -->
+            <div id="project-description" class="project-description"></div>
+            <!-- Imagen única para proyectos con una sola imagen -->
+            <img id="project-image" class="project-image" src="" alt="" onclick="openModal(0)" style="display: none;">
+            <!-- Galería para proyectos con múltiples imágenes -->
+            <div id="project-gallery" class="project-gallery"></div>
+        </div>
+    </main>
+
+    <!-- Modal para imagen ampliada -->
+    <div id="image-modal" class="image-modal" onclick="closeModal()">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <button class="modal-nav modal-prev" onclick="prevImage(event)">‹</button>
+        <button class="modal-nav modal-next" onclick="nextImage(event)">›</button>
+        <div class="modal-content">
+            <img id="modal-image" class="modal-image" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        let currentImages = [];
+        let currentImageIndex = 0;
+
+        // Datos de los proyectos
+        const projectsData = {
+            'edificio-altavista': {
+                title: 'Edificio Altavista',
+                info: '2023 • Residencial • Lima, Perú',
+                images: [
+                    'images/Edificio Altavista/Edificio AltavistaContratista GeneralEmpresa- JE Construcciones Generales.jpg'
+                ],
+                description: 'El Edificio Altavista es un proyecto residencial contemporáneo que combina diseño moderno con funcionalidad excepcional. Desarrollado por JE Construcciones Generales, este edificio representa un hito en el desarrollo urbano de Lima, ofreciendo espacios habitacionales de alta calidad con acabados de primera y una arquitectura que maximiza el aprovechamiento de la luz natural.'
+            },
+            'edificio-palomas-surquillo': {
+                title: 'Edificio Palomas, Surquillo',
+                info: '2022 • Residencial • Surquillo, Lima',
+                images: [
+                    'images/Edificio Palomas, Surquillo/Edificio Palomas, Surquillo.png'
+                ],
+                description: 'El Edificio Palomas en Surquillo es un proyecto residencial que destaca por su diseño funcional y ubicación estratégica. Este desarrollo habitacional ofrece unidades modernas con acabados de calidad, optimizando el uso del espacio urbano disponible. El proyecto se integra armoniosamente con el entorno del distrito de Surquillo, proporcionando soluciones habitacionales contemporáneas para familias que buscan comodidad y accesibilidad en una zona céntrica de Lima.'
+            },
+            'hotel-paracas': {
+                title: 'Hotel Paracas',
+                info: '2021 • Hotelero • Paracas, Ica',
+                images: [
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease.jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (1).jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (2).jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (3).jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (4).jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (5).jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (6).jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (7).jpg',
+                    'images/Hotel paracas/Hotel ParacasGerencia de ProyectoEmpresa- Bovis Lend Lease (8).jpg'
+                ],
+                description: 'El Hotel Paracas es un proyecto hotelero de lujo ubicado en la hermosa bahía de Paracas. Este desarrollo turístico combina arquitectura contemporánea con el entorno natural costero, ofreciendo una experiencia única para huéspedes que buscan confort y exclusividad. Desarrollado bajo la gerencia de proyecto de Bovis Lend Lease, el hotel destaca por su diseño que respeta el paisaje desértico y marino de la región, integrando espacios que maximizan las vistas al océano Pacífico.'
+            },
+            'hotel-tambo-del-inka': {
+                title: 'Hotel Tambo del Inka, Urubamba, Cusco',
+                info: '2020 • Hotelero • Urubamba, Cusco',
+                images: [
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease.jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (1).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (2).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (3).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (4).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (5).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (6).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (7).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (8).jpg',
+                    'images/Hotel Tambo del Inka, Urubamba, Cusco/Hotel Tambo del InkaGerencia de ProyectoEmpresa- Bovis Lend Lease (9).jpg'
+                ],
+                description: 'El Hotel Tambo del Inka es un proyecto hotelero de lujo ubicado en el Valle Sagrado de los Incas, en Urubamba, Cusco. Este excepcional desarrollo turístico combina la rica herencia cultural andina con el confort y la elegancia contemporánea. Desarrollado bajo la gerencia de proyecto de Bovis Lend Lease, el hotel se integra armoniosamente con el paisaje montañoso del Valle Sagrado, ofreciendo a los huéspedes una experiencia única que conecta con la historia milenaria de la región inca, mientras disfrutan de instalaciones de clase mundial y vistas espectaculares de los Andes peruanos.'
+            },
+            'casa-moderna-lima': {
+                title: 'Casa Moderna Lima',
+                info: '2023 • Residencial • Lima, Perú',
+                images: [
+                    'images/casa-moderna/exterior-1.jpg'
+                ],
+                description: 'Esta vivienda unifamiliar contemporánea representa la perfecta síntesis entre modernidad y funcionalidad. El diseño maximiza la entrada de luz natural a través de grandes ventanales, creando espacios amplios y conectados con el entorno natural.'
+            },
+            'centro-comercial-miraflores': {
+                title: 'Centro Comercial Miraflores',
+                info: '2022 • Comercial • Miraflores, Lima',
+                images: [
+                    'images/centro-comercial/exterior-1.jpg'
+                ],
+                description: 'Desarrollo comercial innovador que redefine el concepto de centro comercial tradicional, integrando retail, oficinas y espacios gastronómicos en un diseño cohesivo que responde al contexto urbano de Miraflores.'
+            },
+            'apartamento-loft': {
+                title: 'Apartamento Loft',
+                info: '2019 • Residencial • Lima, Perú',
+                images: [
+                    'images/apartamento-loft/exterior-1.jpg'
+                ],
+                description: 'Renovación integral de un espacio industrial convertido en loft moderno. El diseño aprovecha la altura y amplitud original, creando un ambiente contemporáneo con elementos industriales preservados.'
+            }
+        };
+
+        // Obtener ID del proyecto desde URL
+        function getProjectId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id') || 'edificio-altavista';
+        }
+
+        // Cargar datos del proyecto
+        function loadProjectData() {
+            const projectId = getProjectId();
+            const project = projectsData[projectId];
+            
+            if (project) {
+                document.getElementById('project-title').textContent = project.title;
+                document.getElementById('project-info').textContent = project.info;
+                document.getElementById('project-description').textContent = project.description;
+                document.title = `${project.title} - LARQ Arquitectura y Construcción`;
+                
+                currentImages = project.images;
+                
+                // Si hay múltiples imágenes, mostrar galería
+                if (project.images.length > 1) {
+                    showGallery(project.images);
+                } else {
+                    // Si hay una sola imagen, mostrar imagen única
+                    showSingleImage(project.images[0]);
+                }
+            }
+        }
+
+        // Mostrar imagen única
+        function showSingleImage(imageSrc) {
+            const singleImage = document.getElementById('project-image');
+            const gallery = document.getElementById('project-gallery');
+            
+            singleImage.src = imageSrc;
+            singleImage.style.display = 'block';
+            gallery.style.display = 'none';
+        }
+
+        // Mostrar galería de imágenes
+        function showGallery(images) {
+            const singleImage = document.getElementById('project-image');
+            const gallery = document.getElementById('project-gallery');
+            
+            singleImage.style.display = 'none';
+            gallery.style.display = 'grid';
+            gallery.innerHTML = '';
+            
+            images.forEach((imageSrc, index) => {
+                const img = document.createElement('img');
+                img.src = imageSrc;
+                img.alt = `Imagen ${index + 1}`;
+                img.className = 'gallery-image';
+                img.onclick = () => openModal(index);
+                gallery.appendChild(img);
+            });
+        }
+
+        // Abrir modal con imagen ampliada
+        function openModal(imageIndex) {
+            currentImageIndex = imageIndex;
+            const modal = document.getElementById('image-modal');
+            const modalImage = document.getElementById('modal-image');
+            
+            modalImage.src = currentImages[currentImageIndex];
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Mostrar/ocultar botones de navegación según el número de imágenes
+            const prevBtn = document.querySelector('.modal-prev');
+            const nextBtn = document.querySelector('.modal-next');
+            
+            if (currentImages.length > 1) {
+                prevBtn.style.display = 'block';
+                nextBtn.style.display = 'block';
+            } else {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            }
+        }
+
+        // Cerrar modal
+        function closeModal() {
+            const modal = document.getElementById('image-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Imagen anterior
+        function prevImage(event) {
+            event.stopPropagation();
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+            } else {
+                currentImageIndex = currentImages.length - 1;
+            }
+            updateModalImage();
+        }
+
+        // Imagen siguiente
+        function nextImage(event) {
+            event.stopPropagation();
+            if (currentImageIndex < currentImages.length - 1) {
+                currentImageIndex++;
+            } else {
+                currentImageIndex = 0;
+            }
+            updateModalImage();
+        }
+
+        // Actualizar imagen del modal
+        function updateModalImage() {
+            const modalImage = document.getElementById('modal-image');
+            modalImage.style.opacity = '0';
+            
+            setTimeout(() => {
+                modalImage.src = currentImages[currentImageIndex];
+                modalImage.style.opacity = '1';
+            }, 150);
+        }
+
+        // Cerrar modal con tecla Escape y navegación con flechas
+        document.addEventListener('keydown', function(event) {
+            const modal = document.getElementById('image-modal');
+            if (modal.style.display === 'flex') {
+                switch(event.key) {
+                    case 'Escape':
+                        closeModal();
+                        break;
+                    case 'ArrowLeft':
+                        if (currentImages.length > 1) prevImage(event);
+                        break;
+                    case 'ArrowRight':
+                        if (currentImages.length > 1) nextImage(event);
+                        break;
+                }
+            }
+        });
+
+        // Cargar proyecto al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProjectData();
+        });
+    </script>
+    
+    <!-- Page Transitions Script -->
+    <script src="js/page-transitions.js"></script>
+</body>
+</html>
+

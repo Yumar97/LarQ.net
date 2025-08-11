@@ -1,0 +1,449 @@
+/* Gallery Page Styles - Estilos específicos para la galería de proyectos */
+
+.gallery-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.gallery-intro p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Filtros de Galería */
+.gallery-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #3498db;
+    background: transparent;
+    color: #3498db;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #3498db;
+    color: white;
+}
+
+/* Grid de Galería - Diseño Tetris */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    grid-auto-flow: row dense;
+}
+
+.gallery-item {
+    background: white;
+    overflow: hidden;
+    opacity: 1;
+    position: relative;
+}
+
+/* Patrón Tetris específico para los 4 proyectos */
+.gallery-item:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.gallery-item:nth-child(2) {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.gallery-item:nth-child(3) {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.gallery-item:nth-child(4) {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.gallery-image {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 180px;
+}
+
+.gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Overlay de Galería */
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+    opacity: 0;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-info {
+    align-self: flex-end;
+}
+
+.gallery-info h3 {
+    color: white;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.gallery-info p {
+    color: #ddd;
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.category-tag {
+    background: rgba(52, 152, 219, 0.9);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.gallery-actions {
+    align-self: flex-start;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.view-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+.view-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.view-btn i {
+    font-size: 1.1rem;
+}
+
+/* Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+.lightbox.active {
+    opacity: 1;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 2001;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#lightbox-image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-caption {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.lightbox-caption h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: all;
+    backdrop-filter: blur(10px);
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.lightbox-prev {
+    margin-left: -80px;
+}
+
+.lightbox-next {
+    margin-right: -80px;
+}
+
+/* Responsive específico para Gallery */
+@media (max-width: 1200px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 180px;
+        gap: 0.4rem;
+    }
+    
+    /* Ajustar patrón para 3 columnas */
+    .gallery-item:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .gallery-item:nth-child(2) {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .gallery-item:nth-child(3) {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .gallery-item:nth-child(4) {
+        grid-column: span 3;
+        grid-row: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 160px;
+        gap: 0.3rem;
+    }
+
+    /* Patrón simplificado para tablets */
+    .gallery-item:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .gallery-item:nth-child(2) {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .gallery-item:nth-child(3) {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .gallery-item:nth-child(4) {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .gallery-filters {
+        gap: 0.5rem;
+    }
+
+    .filter-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .gallery-image {
+        min-height: 140px;
+    }
+
+    .lightbox-nav {
+        display: none;
+    }
+
+    .lightbox-close {
+        top: -40px;
+        font-size: 1.5rem;
+        width: 35px;
+        height: 35px;
+    }
+
+    #lightbox-image {
+        max-height: 70vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 200px;
+        gap: 0.3rem;
+    }
+
+    /* Resetear spans para móvil */
+    .gallery-item {
+        grid-column: span 1 !important;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    /* Crear variedad en móvil */
+    .gallery-item:nth-child(1) {
+        grid-row: span 2;
+    }
+
+    .gallery-item:nth-child(2) {
+        grid-row: span 1;
+    }
+
+    .gallery-item:nth-child(3) {
+        grid-row: span 1;
+    }
+
+    .gallery-item:nth-child(4) {
+        grid-row: span 1;
+    }
+
+    .filter-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .gallery-image {
+        min-height: 160px;
+    }
+
+    .gallery-overlay {
+        padding: 1rem;
+    }
+
+    .gallery-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .gallery-info p {
+        font-size: 0.85rem;
+    }
+
+    .view-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .lightbox-content {
+        max-width: 95%;
+        max-height: 95%;
+    }
+
+    .lightbox-caption h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Estados de filtrado */
+.gallery-item[style*="display: none"] {
+    opacity: 0;
+}
+
+/* Mejoras de accesibilidad */
+.view-btn:focus,
+.filter-btn:focus,
+.lightbox-close:focus,
+.lightbox-prev:focus,
+.lightbox-next:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
